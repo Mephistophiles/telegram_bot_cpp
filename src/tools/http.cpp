@@ -1,18 +1,7 @@
-#include "http.hpp"
-#include <string.h>
-#include <cassert>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <resolv.h>
-#include <netdb.h>
-#include <string.h>
-#include <unistd.h>
-#include <iostream>
-#include <errno.h>
+#include "../../include_local/http.hpp"
 #include <curl/curl.h>
 
-#include "tools.hpp"
+#include "../../include_local/tools.hpp"
 
 using namespace std;
 
@@ -24,14 +13,13 @@ Http::~Http(void) {
 	curl_global_cleanup();
 }
 
-static int writer(char *data, size_t size, size_t nmemb, string *buffer) {
-	int result = 0;
+static size_t writer(char *data, size_t size, size_t nmemb, string *buffer) {
+	size_t result = 0;
 	if (buffer == NULL)
 		goto out;
 
 	result = nmemb * size;
 	buffer->append(data, result);
-
 out:
 	return result;
 }
