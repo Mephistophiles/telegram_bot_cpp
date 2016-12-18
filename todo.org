@@ -1,0 +1,7 @@
+* TODO BOT[0%]:
+  - [ ] Get Structure bot
+  - [ ] Get token
+  - [ ] Send message
+  - [ ] Get message
+  - [ ] Parse message
+  - [ ] Run commands
